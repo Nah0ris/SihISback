@@ -1,0 +1,112 @@
+.specular-button {
+  --sb-radius: 10px;
+  --sb-tint: #1e3a8a;
+  --sb-tint-opacity: 0.85;
+  --sb-blur: 0px;
+  --sb-text-color: #ffffff;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--sb-radius);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--sb-text-color);
+  background-color: var(--sb-tint);
+  background: color-mix(in srgb, var(--sb-tint) calc(var(--sb-tint-opacity) * 100%), transparent);
+  box-shadow: 0 4px 14px -3px rgba(15, 23, 42, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(var(--sb-blur));
+  backdrop-filter: blur(var(--sb-blur));
+  cursor: pointer;
+  outline: none;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.specular-button:hover {
+  box-shadow: 0 6px 20px -3px rgba(37, 99, 235, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.specular-button:active {
+  transform: scale(0.97);
+}
+
+.specular-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--sb-text-color) 65%, transparent);
+  outline-offset: 3px;
+}
+
+.specular-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.specular-button:disabled:active {
+  transform: none;
+}
+
+.specular-button--sm {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 0.75rem;
+}
+
+.specular-button--md {
+  height: 36px;
+  padding: 0 18px;
+  font-size: 0.875rem;
+}
+
+.specular-button--lg {
+  height: 44px;
+  padding: 0 24px;
+  font-size: 1rem;
+}
+
+.specular-button--icon {
+  height: 36px;
+  width: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.specular-button__light {
+  position: absolute;
+  inset: -24px;
+  z-index: 1;
+  display: block;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  pointer-events: none;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.specular-button__label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  white-space: nowrap;
+}
+
+/* Fallback when WebGL is unavailable or context lost */
+.specular-button--fallback {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+  border: 1px solid rgba(147, 197, 253, 0.5);
+  box-shadow: 0 0 14px rgba(96, 165, 250, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
